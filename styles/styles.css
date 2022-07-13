@@ -1,0 +1,83 @@
+:root {
+  --background: rgb(26,24,24);
+  --empty: grey;
+  --correct: rgb(20, 141, 20);
+  --misplaced: rgb(214, 202, 29);
+  --wrong: rgb(61, 61, 61);
+
+}
+
+body {
+  background-color: var(--background);
+}
+#game {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+
+.board {
+  display: grid;
+
+  grid-template-rows: repeat(6, 1fr);
+  gap: 5px;
+  width: 380px;
+  height: 420px;
+
+  background-color: var(--background);
+  margin-bottom: 5%;
+}
+
+.row {
+  display: grid;
+
+  grid-template-columns: repeat(5, 1fr);
+  gap: 5px;
+}
+
+.tile {
+  background-color: var(--empty);
+  display: inline-flex;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  line-height: 2rem;
+  font-weight: bold;
+}
+
+.key.correct, .tile.correct {
+  background-color: var(--correct);
+}
+
+.key.misplaced, .tile.misplaced {
+  background-color: var(--misplaced);
+}
+
+.key.wrong, .tile.wrong {
+  background-color: var(--wrong);
+}
+
+.keyboard {
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+.keyboard div {
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+}
+
+.key {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 3px;
+  border-radius: 3px;
+  background-color: var(--empty);
+  color: white;
+  font-size: 2rem;
+}
