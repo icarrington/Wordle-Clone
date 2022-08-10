@@ -6,7 +6,22 @@ let currentRow = rows[rowNumber];
 let tiles = currentRow.querySelectorAll('.tile');
 let tileNumber = 0;
 
-let word = 'LUNCH'; //the answer, maybe it can be dynamically set from a server?
+let word = 'LUNCH'; //Fallback word in case the API doesn't work.
+
+//Random Words API
+const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': '7bc8d4e323msha6cef18da9da4f3p1d5954jsnc3e2d1532671',
+		'X-RapidAPI-Host': 'random-words5.p.rapidapi.com'
+	}
+};
+
+fetch('https://random-words5.p.rapidapi.com/getMultipleRandom?count=2&wordLength=5', options)
+	.then(response => response.json())
+	.then(response => word = response[0].toUpperCase())
+	.catch(err => console.error(err));
+
 
 
 
@@ -57,8 +72,14 @@ function showColors() {
 
 //Controller Section?
 function submitEntry() {
-  if(Array.from(tiles).every(tile => tile.classList.contains('correct'))) document.removeEventListener('keyup', changeLetter);
-  if (rowNumber >= 5) return;
+  if(Array.from(tiles).every(tile => tile.classList.contains('correct'))) {
+    document.removeEventListener('keyup', changeLetter);
+  }
+  if (rowNumber >= 5) {
+    alert('Word is ' + word);
+    return;
+  }
+
   rowNumber++;
   currentRow = rows[rowNumber];
   tileNumber = 0;
