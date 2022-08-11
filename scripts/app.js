@@ -50,9 +50,9 @@ function showColors() {
       key.classList.add('correct');
     }
     else if (word.includes(tile.textContent)) {
-      tile.classList.add('misplaced');
+      tile.classList.add('present');
       let key = document.getElementById(tile.textContent);
-      key.classList.add('misplaced');
+      key.classList.add('present');
     }
     else {
       tile.classList.add('wrong');
@@ -66,6 +66,8 @@ function showColors() {
 function submitEntry() {
   if(Array.from(tiles).every(tile => tile.classList.contains('correct'))) {
     document.removeEventListener('keyup', changeLetter);
+    alert('Correct!');
+    return;
   }
   if (rowNumber >= 5) {
     alert('Word is ' + word);

@@ -2,7 +2,7 @@
   --background: rgb(26,24,24);
   --empty: grey;
   --correct: rgb(20, 141, 20);
-  --misplaced: rgb(214, 202, 29);
+  --present: rgb(214, 202, 29);
   --wrong: rgb(61, 61, 61);
 
 }
@@ -52,8 +52,8 @@ body {
   background-color: var(--correct);
 }
 
-.key.misplaced, .tile.misplaced {
-  background-color: var(--misplaced);
+.key.present, .tile.present {
+  background-color: var(--present);
 }
 
 .key.wrong, .tile.wrong {
