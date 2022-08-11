@@ -9,18 +9,10 @@ let tileNumber = 0;
 let word = 'LUNCH'; //Fallback word in case the API doesn't work.
 
 //Random Words API
-const options = {
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': '7bc8d4e323msha6cef18da9da4f3p1d5954jsnc3e2d1532671',
-		'X-RapidAPI-Host': 'random-words5.p.rapidapi.com'
-	}
-};
-
-fetch('https://random-words5.p.rapidapi.com/getMultipleRandom?count=2&wordLength=5', options)
-	.then(response => response.json())
-	.then(response => word = response[0].toUpperCase())
-	.catch(err => console.error(err));
+fetch('https://random-word-api.herokuapp.com/word?length=5')
+  .then(response => response.json())
+  .then(response => word = response[0].toUpperCase())
+  .catch(err => console.log(err));
 
 
 
