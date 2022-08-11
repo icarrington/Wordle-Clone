@@ -81,3 +81,27 @@ body {
   color: white;
   font-size: 2rem;
 }
+
+@media screen and (max-width: 800px)  {
+  .board {
+    width: 300px;
+  }
+
+  .keyboard {
+    width: 300px;
+  }
+  .keyboard div {
+    padding: 5px 0px;
+  }
+
+  .key {
+    width: 27px;
+    height: 50px;
+    font-size: 12px;
+    margin: 2px;
+  }
+
+  #Enter {
+    width: 45px;
+  }
+}

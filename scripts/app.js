@@ -81,6 +81,7 @@ function submitEntry() {
 function handleKeyboardClicks(event) {
   let target = event.target;
   let press = new KeyboardEvent('keyup', {key: target.id});
+  event.preventDefault(); //prevents zooming on mobile
   document.dispatchEvent(press);
 }
 
