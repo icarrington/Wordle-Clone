@@ -21,26 +21,27 @@ fetch('https://random-word-api.herokuapp.com/word?length=5')
 function changeLetter(event) {
   const letter = event.key;
   
-  if((!/^\w$/i.test(letter)) && (letter != 'Backspace') && (letter != 'Enter')) return;
+  if((!/^\w$/i.test(letter)) && (letter != 'Backspace') && (letter != 'Enter')) return; //Makes sure letter is a character and not a key like Enter or Backspace.
   
 
-  if (letter == 'Enter') {
+  if (letter == 'Enter') { //Submits the word if there are 5 letters.
     if (tileNumber < 4) return;
     showColors();
     return submitEntry();
   }
   
-  if(letter == 'Backspace') {
+  if(letter == 'Backspace') { //Deletes a letter
     if(tileNumber == 0) return;
     tileNumber--;
     tiles[tileNumber].innerHTML = '';
-  } else if (tileNumber >= 5) return;
+  } else if (tileNumber >= 5) return; //Do nothing after 5 letters
   else {
     tiles[tileNumber].innerHTML = letter.toUpperCase();
     tileNumber++;
   }
 }
 
+//This function changes the CSS styling for each letter depending on whether that letter is in the right spot, present in the word, or not in the word.
 function showColors() {
   for (let i = 0; i < tiles.length; i++) {
     let tile = tiles[i];
@@ -70,7 +71,7 @@ function submitEntry() {
     return;
   }
   if (rowNumber >= 5) {
-    alert('Word is ' + word);
+    alert('Word is ' + word); //alert the word after 5 incorrect guesses.
     return;
   }
 
@@ -80,6 +81,7 @@ function submitEntry() {
   tiles = currentRow.querySelectorAll('.tile');
 }
 
+//this function makes it so that clicking the on screen keyboard works the same as typing with a keyboard.
 function handleKeyboardClicks(event) {
   let target = event.target;
   let press = new KeyboardEvent('keyup', {key: target.id});
